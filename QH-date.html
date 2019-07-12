@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>QH-data</title>
+    <script>
+        function startTime() {
+            document.getElementById('global_clock_bj').innerHTML = calcTime(+8)
+            t = setTimeout('startTime()', 1000)
+        }
+
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i }
+            return i
+        }
+
+        function calcTime(offset) {
+            var d = new Date();
+            var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+            var nd = new Date(utc + (3600000 * offset));
+            var h = nd.getHours()
+            var m = nd.getMinutes()
+            var s = nd.getSeconds()
+            h = checkTime(h)
+            m = checkTime(m)
+            s = checkTime(s)
+            return h + ":" + m + ":" + s
+        }
+    </script>
+    <script type="text/javascript" src="http://hq.sinajs.cn/list=FU0,PP0,TA0,RB0,I0,hf_CL,hf_XAU" charset="gb2312"></script>
+    <script>
+
+        function FU(){
+            var elementsFU=hq_str_FU0.split(",");
+            document.getElementById('textfield').value = elementsFU[6];
+        }
+    
+    </script>
+  </head>
+  <body onLoad="startTime()">
+        
+        <div>
+            <div><i></i>北京：<span id="global_clock_bj"></span></div>
+		</div>
+
+        <div id="FU"></div>
+        <label>
+            <span type="text" name="textfield" id="textfield"></span>
+        </label>
+
+
+    <!-- Optional JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

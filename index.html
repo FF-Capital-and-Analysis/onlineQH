@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<meta http-equiv='refresh' content='5'>
+		<link rel="stylesheet" type="text/css" href="./gbcss.css">
+		<script type="text/javascript" src="./time.js"></script>
+	</head>
+	<body onLoad="startTime()">
+		<div>
+			<div><i></i>北京：<span id="global_clock_bj"></span></div>
+<!-- 			<div class="global_clock_s"><i></i>伦敦：<span id="global_clock_ld"></span></div>
+			<div class="global_clock_s"><i></i>纽约：<span id="global_clock_ny"></span></div> -->
+		</div>
+		<br>
+		<!-- <script>setTimeout("location=location; ", 5000); </script> -->
+		<script type="text/javascript" src="http://hq.sinajs.cn/list=FU0,PP0,TA0,RB0,I0,hf_CL,hf_XAU" charset="gb2312"></script>
+		<script type="text/javascript">
+			var elements=hq_str_FU0.split(",");
+			document.write("燃油FU:"+elements[6]+ '<br>');
+
+			var elements=hq_str_PP0.split(",");
+			document.write("聚丙PP:"+elements[6]+ '<br>');
+
+			var elements=hq_str_TA0.split(",");
+			document.write("PTA:"+elements[6]+ '<br>');
+
+			var elements=hq_str_RB0.split(",");
+			document.write("螺纹RB:"+elements[6]+ '<br>');
+
+			var elements=hq_str_I0.split(",");
+			document.write("铁矿I:"+elements[6]+ '<br>');
+
+			var elements=hq_str_hf_CL.split(",");
+			document.write("WTI:"+elements[2]+ '<br>');
+
+			var elements=hq_str_hf_XAU.split(",");
+			document.write("伦金:"+elements[2]+ '<br>');
+		</script>
+
+	</body>
+</html>
