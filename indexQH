@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="https://github.com/fluidicon.png" type="image/x-icon" color="red">
+	<title>GitHub Qh</title>
+
+	<style>
+		.panel{
+			width: 165px;
+		}
+		.long{
+			width: 140px;
+		}
+	</style>
+
+	<script>
+        function startTime() {
+            document.getElementById('global_clock_bj').innerHTML = calcTime(+8)
+            getQHapi()
+            t = setTimeout('startTime()', 1000)
+        }
+
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i }
+            return i
+        }
+
+        function calcTime(offset) {
+            var d = new Date();
+            var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+            var nd = new Date(utc + (3600000 * offset));
+            var h = nd.getHours()
+            var m = nd.getMinutes()
+            var s = nd.getSeconds()
+            h = checkTime(h)
+            m = checkTime(m)
+            s = checkTime(s)
+            return h + ":" + m + ":" + s
+        }
+    </script>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>	
+
+</head>
+<body onLoad="startTime()">
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">BJ：<span id="global_clock_bj"></span></h3>
+	  </div>
+	  <div  id="qh" class="panel-body">
+		<div>
+			<ul class="list-group long">
+			  <li class="list-group-item">
+			    <span class="badge FU">{{FU}}</span>
+			    FU
+			  </li>
+			  <li class="list-group-item">
+			    <span class="badge PP">{{PP}}</span>
+			    PP
+			  </li>
+			  <li class="list-group-item">
+			    <span class="badge PTA">{{PTA}}</span>
+			    PTA
+			  </li>
+			  <li class="list-group-item">
+			    <span class="badge I">{{I}}</span>
+			    I
+			  </li>
+			  <li class="list-group-item">
+			    <span class="badge RB">{{RB}}</span>
+			    RB
+			  </li>
+			  <li class="list-group-item">
+			    <span class="badge WTI">{{WTI}}</span>
+			    WTI
+			  </li>
+			  <li class="list-group-item">
+			    <span class="badge XAU">{{WTI}}</span>
+			    XAU
+			  </li>
+			</ul>
+		</div>
+	  </div>
+	</div>	
+	
+    <script>
+        // http://hq.sinajs.cn/list=FU0,PP0,TA0,RB0,I0,hf_CL,hf_XAU
+        function getQHapi (){
+	        $.ajax({  
+				    dataType:'script',  
+				    url:'http://hq.sinajs.cn/list=FU0,PP0,TA0,RB0,I0,hf_CL,hf_XAU',  
+				    cache: true,  
+				    success: function(){ 
+					    var FU=hq_str_FU0.split(",")[6].substring(0,4);
+						var PP=hq_str_PP0.split(",")[6].substring(0,4);
+						var PTA=hq_str_TA0.split(",")[6].substring(0,4);
+						var RB=hq_str_RB0.split(",")[6].substring(0,4);
+						var I=hq_str_I0.split(",")[6].substring(0,5);
+						var WTI=hq_str_hf_CL.split(",")[2].substring(0,5);
+						var XAU=hq_str_hf_XAU.split(",")[2].substring(0,7);
+
+						$(".FU").html(FU);
+						$(".PP").html(PP);
+						$(".PTA").html(PTA);
+						$(".RB").html(RB);
+						$(".I").html(I);
+						$(".WTI").html(WTI);
+						$(".XAU").html(XAU);
+				    }  
+				});  
+         }
+      	
+    </script>
+</div>
+</body>
+</html>
